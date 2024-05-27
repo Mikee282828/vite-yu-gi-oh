@@ -15,13 +15,11 @@ export default {
   methods: {
   },
   created() {
-    console.log(this.store);
-    axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=10&offset=0").then(
+    axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=15").then(
       (result) => {
         this.store = result.data.data;
         console.log(this.store);
       });
-    console.log(this.store);
   }
 }
 </script>
