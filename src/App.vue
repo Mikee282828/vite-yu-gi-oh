@@ -9,7 +9,8 @@ export default {
   },
   data() {
     return {
-      store
+      store,
+      prova : []
     }
   },
   methods: {
@@ -17,8 +18,9 @@ export default {
   created() {
     axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=15").then(
       (result) => {
-        this.store = result.data.data;
-        console.log(this.store);
+        for (const iterator of result.data.data) {
+          this.store.push(iterator);
+        }
       });
   }
 }
