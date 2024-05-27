@@ -1,14 +1,14 @@
 <script>
 import SingleCard from "./SingleCard.vue";
-import data from "../data/store.js";
+import lista from "../data/store.js";
 export default {
     name: "CardList",
     components: {
         SingleCard,
-        data
     },
     data() {
         return {
+            lista
         }
     },
     methods: {
@@ -29,7 +29,7 @@ export default {
 
         <div class="cardContainer">
             <div class="cardRows">
-                <SingleCard v-for="element in data" :immagine="element.card_images[0].image_url_small"/>
+                <SingleCard v-for="element in lista" :immagine="element.card_images[0].image_url_small" />
             </div>
         </div>
 

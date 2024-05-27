@@ -5,7 +5,6 @@ export default {
     },
     name: "SingleCard",
     data() {
-
     },
     methods: {
     },
@@ -16,12 +15,16 @@ export default {
 
 <template>
     <div class="card">
-        <img src="" alt="">
+        <img :src="immagine" alt="carta">
     </div>
 </template>
 
 <style>
 .card {
     width: 20%;
+}
+
+[alt="carta"] {
+    width: 100%;
 }
 </style>
