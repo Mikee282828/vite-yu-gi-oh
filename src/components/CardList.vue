@@ -29,14 +29,14 @@ export default {
 
         <div class="cardContainer">
             <div class="cardRows">
-                <SingleCard v-for="element in lista" :immagine="element.card_images[0].image_url_small" />
+                <SingleCard v-for="element in lista" :immagine="element.card_images[0].image_url" :nome="element.name" :tipo="element.type"/>
             </div>
         </div>
 
     </div>
 </template>
 
-<style>
+<style scoped>
 .container {
     padding: 3rem;
     background-color: yellowgreen;
@@ -50,5 +50,6 @@ export default {
 .cardRows {
     display: flex;
     flex-flow: row wrap;
+    gap:calc(5% / 4);
 }
 </style>
