@@ -37,13 +37,13 @@ export default {
 
   <div class="selezione">
     <select name="archetipo" id="archetype" v-model="archetipo">
-      <option value="myAll"> All 
+      <option value="myAll"> All
       </option>
       <option v-for="object in this.store.archetypes" :value="object.archetype_name">{{ object.archetype_name }}
       </option>
     </select>
   </div>
-  
+
   <CardList :selectedArchetypes="archetipo" />
 
 </template>
@@ -52,6 +52,6 @@ export default {
 <style scoped>
 select {
   padding: 1rem;
-  margin:3rem 0 0 3rem;
+  margin: 3rem 0 0 3rem;
 }
 </style>

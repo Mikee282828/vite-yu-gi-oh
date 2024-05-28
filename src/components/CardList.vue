@@ -12,20 +12,20 @@ export default {
     data() {
         return {
             data,
-            nOfFound:0
+            nOfFound: 0
         }
     },
     methods: {
-        foundCardsNumber(){
+        foundCardsNumber() {
             this.nOfFound = 0;
             let counter = 0;
             for (const iterator of data.cards) {
-                if(iterator.archetype == this.selectedArchetypes){
+                if (iterator.archetype == this.selectedArchetypes) {
                     this.nOfFound++;
                 }
                 counter++
             }
-            if(this.selectedArchetypes == "myAll"){
+            if (this.selectedArchetypes == "myAll") {
                 this.nOfFound = counter;
             }
             return this.nOfFound;
@@ -45,7 +45,9 @@ export default {
                 <h2>Found {{ foundCardsNumber() }} cards</h2>
             </div>
             <div class="cardRows">
-                <SingleCard v-for="element in data.cards" :immagine="element.card_images[0].image_url" :nome="element.name" :tipo="element.type" v-show="selectedArchetypes == element.archetype || selectedArchetypes == `myAll`"/>
+                <SingleCard v-for="element in data.cards" :immagine="element.card_images[0].image_url"
+                    :nome="element.name" :tipo="element.type"
+                    v-show="selectedArchetypes == element.archetype || selectedArchetypes == `myAll`" />
             </div>
         </div>
 
@@ -53,11 +55,12 @@ export default {
 </template>
 
 <style scoped>
-.found{
+.found {
     background-color: #222;
-    color:white;
-    padding:1rem;
+    color: white;
+    padding: 1rem;
 }
+
 .container {
     padding: 3rem;
 }

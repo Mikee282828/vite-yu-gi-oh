@@ -7,8 +7,8 @@ export default {
     },
     name: "SingleCard",
     data() {
-        return{
-            
+        return {
+
         }
     },
     methods: {
@@ -42,12 +42,14 @@ export default {
 [alt="carta"] {
     width: 100%;
 }
-.info{
-    padding-top:1rem;
-    height:10rem;
+
+.info {
+    padding-top: 1rem;
+    height: 10rem;
 }
-h2{
-    color:white;
-    margin-bottom:1rem;
+
+h2 {
+    color: white;
+    margin-bottom: 1rem;
 }
 </style>
