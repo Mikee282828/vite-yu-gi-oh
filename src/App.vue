@@ -10,17 +10,24 @@ export default {
   data() {
     return {
       store,
-      prova : []
     }
   },
   methods: {
   },
+  // created() {
+  //   axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=15").then(
+  //     (result) => {
+  //       for (const iterator of result.data.data) {
+  //         this.store.card.push(iterator);
+  //       }
+  //     });
+  //   console.log(store);
+  // }
   created() {
     axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=15").then(
       (result) => {
-        for (const iterator of result.data.data) {
-          this.store.push(iterator);
-        }
+        this.store.card = result.data.data
+        console.log(this.store);
       });
   }
 }
@@ -29,6 +36,7 @@ export default {
 <template>
   <AppHeader />
   <CardList />
+  <pre>{{ store }}</pre>
 
 </template>
 

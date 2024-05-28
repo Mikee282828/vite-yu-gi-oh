@@ -29,7 +29,7 @@ export default {
 
         <div class="cardContainer">
             <div class="cardRows">
-                <SingleCard v-for="element in lista" :immagine="element.card_images[0].image_url" :nome="element.name" :tipo="element.type"/>
+                <SingleCard v-for="element in lista.card" :immagine="element.card_images[0].image_url" :nome="element.name" :tipo="element.type"/>
             </div>
         </div>
 
