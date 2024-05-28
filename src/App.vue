@@ -53,5 +53,6 @@ export default {
 select {
   padding: 1rem;
   margin: 3rem 0 0 3rem;
+  font-size: 1rem;
 }
 </style>
