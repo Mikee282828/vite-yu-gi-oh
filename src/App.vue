@@ -11,22 +11,35 @@ export default {
   data() {
     return {
       store,
-      archetipo: "myAll"
+      archetipo:"Dark Magician"
     }
   },
   methods: {
+    getCard() {
+      axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=10&offset=0").then(
+        (result) => {
+          this.store.cards = result.data.data;
+        });
+    },
+    getArchetype() {
+      axios.get("https://db.ygoprodeck.com/api/v7/archetypes.php").then(
+        (result) => {
+          this.store.archetypes = result.data;
+          // console.log(this.store.archetypes[0].archetype_name);
+        }
+      )
+    },
+    getSelected() {
+        axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${this.archetipo}`).then(
+          (result) => {
+            store.selected = result.data.data;
+          }
+        );
+      }
   },
   created() {
-    axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=500&offset=0").then(
-      (result) => {
-        this.store.cards = result.data.data;
-      });
-    axios.get("https://db.ygoprodeck.com/api/v7/archetypes.php").then(
-      (result) => {
-        this.store.archetypes = result.data;
-        // console.log(this.store.archetypes[0].archetype_name);
-      }
-    )
+    this.getCard();
+    this.getArchetype();
   }
 }
 </script>
@@ -36,15 +49,13 @@ export default {
   <AppHeader />
 
   <div class="selezione">
-    <select name="archetipo" id="archetype" v-model="archetipo">
-      <option value="myAll"> All
-      </option>
+    <select name="archetipo" id="archetype" v-model="archetipo" :input="getSelected()">
       <option v-for="object in this.store.archetypes" :value="object.archetype_name">{{ object.archetype_name }}
       </option>
     </select>
   </div>
 
-  <CardList :selectedArchetypes="archetipo" />
+  <CardList />
 
 </template>
 

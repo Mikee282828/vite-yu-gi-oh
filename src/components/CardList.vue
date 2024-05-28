@@ -2,9 +2,6 @@
 import SingleCard from "./SingleCard.vue";
 import data from "../data/store.js";
 export default {
-    props: {
-        selectedArchetypes: String
-    },
     name: "CardList",
     components: {
         SingleCard,
@@ -12,23 +9,11 @@ export default {
     data() {
         return {
             data,
-            nOfFound: 0
         }
     },
     methods: {
         foundCardsNumber() {
-            this.nOfFound = 0;
-            let counter = 0;
-            for (const iterator of data.cards) {
-                if (iterator.archetype == this.selectedArchetypes) {
-                    this.nOfFound++;
-                }
-                counter++
-            }
-            if (this.selectedArchetypes == "myAll") {
-                this.nOfFound = counter;
-            }
-            return this.nOfFound;
+            return data.selected.length;
         }
     },
     mounted() {
@@ -44,10 +29,10 @@ export default {
             <div class="found">
                 <h2>Found {{ foundCardsNumber() }} cards</h2>
             </div>
+            
             <div class="cardRows">
-                <SingleCard v-for="element in data.cards" :immagine="element.card_images[0].image_url"
-                    :nome="element.name" :tipo="element.type"
-                    v-show="selectedArchetypes == element.archetype || selectedArchetypes == `myAll`" />
+                <SingleCard v-for="element in data.selected" :immagine="element.card_images[0].image_url"
+                    :nome="element.name" :tipo="element.type"/>
             </div>
         </div>
 
