@@ -11,7 +11,7 @@ export default {
   data() {
     return {
       store,
-      archetipo:null
+      archetipo: null
     }
   },
   methods: {
@@ -35,12 +35,21 @@ export default {
 
   <AppHeader />
 
-  <select name="archetipo" id="archetype" v-model="archetipo">
-    <option v-for="object in this.store.archetypes" :value="object.archetype_name">{{ object.archetype_name }}</option>
-  </select>
-
+  <div class="selezione">
+    <select name="archetipo" id="archetype" v-model="archetipo">
+      <option v-for="object in this.store.archetypes" :value="object.archetype_name">{{ object.archetype_name }}
+      </option>
+    </select>
+  </div>
+  
   <CardList :selectedArchetypes="archetipo" />
+
 </template>
 
 
-<style></style>
+<style scoped>
+select {
+  padding: 1rem;
+  margin:3rem 0 0 3rem;
+}
+</style>
