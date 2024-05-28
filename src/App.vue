@@ -17,7 +17,7 @@ export default {
   methods: {
   },
   created() {
-    axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=1000&offset=0").then(
+    axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=500&offset=0").then(
       (result) => {
         this.store.cards = result.data.data;
       });
@@ -37,6 +37,8 @@ export default {
 
   <div class="selezione">
     <select name="archetipo" id="archetype" v-model="archetipo">
+      <option value="myAll"> All 
+      </option>
       <option v-for="object in this.store.archetypes" :value="object.archetype_name">{{ object.archetype_name }}
       </option>
     </select>
