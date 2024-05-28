@@ -1,5 +1,5 @@
 import { reactive } from "vue";
 const dati = reactive({
-    card:[]
+    cards:[]
 });
 export default dati;
