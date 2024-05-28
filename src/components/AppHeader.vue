@@ -18,5 +18,8 @@ export default{
     </h1>
 </template>
 
-<style>
+<style scoped>
+h1{
+  background-color: white;
+}
 </style>

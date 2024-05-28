@@ -39,7 +39,6 @@ export default {
 <style scoped>
 .container {
     padding: 3rem;
-    background-color: yellowgreen;
 }
 
 .cardContainer {
