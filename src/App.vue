@@ -1,7 +1,8 @@
 <script>
 import CardList from "./components/CardList.vue";
 import AppHeader from "./components/AppHeader.vue";
-import store from "./data/store.js"
+import store from "./data/store.js";
+import axios from "axios";
 export default {
   components: {
     CardList,
@@ -15,18 +16,30 @@ export default {
   methods: {
   },
   created() {
-    axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=15").then(
+    axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=10&offset=0").then(
       (result) => {
-        this.store.cards = result.data.data
+        this.store.cards = result.data.data;
       });
+    axios.get("https://db.ygoprodeck.com/api/v7/archetypes.php").then(
+      (result) => {
+        this.store.archetypes = result.data;
+        // console.log(this.store.archetypes[0].archetype_name);
+      }
+    )
   }
 }
 </script>
 
 <template>
-  <AppHeader />
-  <CardList />
 
+  <AppHeader />
+
+  <select name="" id="">
+    <option v-for="object in this.store.archetypes" :value="object.archetype_name">{{ object.archetype_name }}</option>
+  </select>
+
+  <CardList />
 </template>
+
 
 <style></style>

@@ -23,10 +23,6 @@ export default {
 <template>
     <div class="container">
 
-        <select name="" id="">
-            <option value="Uno">Uno</option>
-        </select>
-
         <div class="cardContainer">
             <div class="cardRows">
                 <SingleCard v-for="element in lista.cards" :immagine="element.card_images[0].image_url" :nome="element.name" :tipo="element.type"/>

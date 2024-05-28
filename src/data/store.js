@@ -1,5 +1,6 @@
 import { reactive } from "vue";
 const dati = reactive({
-    cards:[]
+    cards:[],
+    archetypes:[]
 });
 export default dati;
