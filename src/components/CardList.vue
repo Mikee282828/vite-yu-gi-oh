@@ -1,14 +1,17 @@
 <script>
 import SingleCard from "./SingleCard.vue";
-import lista from "../data/store.js";
+import data from "../data/store.js";
 export default {
+    props: {
+        selectedArchetypes: String
+    },
     name: "CardList",
     components: {
         SingleCard,
     },
     data() {
         return {
-            lista
+            data
         }
     },
     methods: {
@@ -25,7 +28,8 @@ export default {
 
         <div class="cardContainer">
             <div class="cardRows">
-                <SingleCard v-for="element in lista.cards" :immagine="element.card_images[0].image_url" :nome="element.name" :tipo="element.type"/>
+                <SingleCard v-for="element in data.cards" :immagine="element.card_images[0].image_url"
+                    :nome="element.name" :tipo="element.type" v-show="selectedArchetypes == element.archetype" />
             </div>
         </div>
 
@@ -45,6 +49,6 @@ export default {
 .cardRows {
     display: flex;
     flex-flow: row wrap;
-    gap:calc(5% / 4);
+    gap: calc(5% / 4);
 }
 </style>

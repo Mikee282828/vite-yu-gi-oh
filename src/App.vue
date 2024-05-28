@@ -11,12 +11,13 @@ export default {
   data() {
     return {
       store,
+      archetipo:null
     }
   },
   methods: {
   },
   created() {
-    axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=10&offset=0").then(
+    axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=1000&offset=0").then(
       (result) => {
         this.store.cards = result.data.data;
       });
@@ -34,11 +35,11 @@ export default {
 
   <AppHeader />
 
-  <select name="" id="">
+  <select name="archetipo" id="archetype" v-model="archetipo">
     <option v-for="object in this.store.archetypes" :value="object.archetype_name">{{ object.archetype_name }}</option>
   </select>
 
-  <CardList />
+  <CardList :selectedArchetypes="archetipo" />
 </template>
 
 
